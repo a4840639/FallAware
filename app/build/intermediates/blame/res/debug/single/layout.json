@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/layout/invoked.xml",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/layout/invoked.xml"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/layout/operating.xml",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/layout/operating.xml"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/layout/welcome.xml",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/layout/welcome.xml"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/layout/main.xml",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/layout/main.xml"
+    }
+]

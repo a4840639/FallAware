@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, test</string>
+    <string name="app_name">PerFallD</string>
+    <string name="notifier">notification</string>
+    <string name="welcome">Welcome to PerFallD System</string>
+    
+    <string name="default_value_sensi_preference">Medium</string>
+    <string name="title_sensi_preference">Detection Sensitivity Level</string>
+    <string name="summary_sensi_preference">Setting the degree of sensitivity</string>
+    <string name="dialog_title_sensi_preference">Select Level</string>    
+    
+    <string name="default_value_alarminfo_preference">Fall Detected</string>
+    <string name="title_alarminfo_preference">Input Alert Information</string>
+    <string name="summary_alarminfo_preference">The information shown in alert</string>
+    <string name="dialog_title_alarminfo_preference">Enter Information</string>
+    
+    <string name="default_value_sound_preference">one</string>
+    <string name="title_sound_preference">Sound</string>
+    <string name="summary_sound_preference">Setting the alarm sound</string>
+    <string name="dialog_title_sound_preference">Select</string>  
+    
+    <string name="title_checkbox_preference">Vibrate</string>
+    <string name="summary_checkbox_preference">Setting to vibrate or not</string>  
+    
+    <string name="first_preferences_category">Detection Preferences</string>
+    <string name="second_preferences_category">Prompt Preferences</string>
+    
+    <string name="NotYet">To trigger another action!\nNot implemented yet...</string>
+    
+</resources>

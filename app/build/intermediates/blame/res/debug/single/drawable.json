@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/icon1.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/icon1.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/setting.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/setting.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/down.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/down.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/fall_down.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/fall_down.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/down_copy.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/down_copy.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/alert_dialog_icon.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/alert_dialog_icon.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/play.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/play.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/mobile_shake_settings001a.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/mobile_shake_settings001a.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/quit.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/quit.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/icon.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/icon.png"
+    },
+    {
+        "merged": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/res/merged/debug/drawable/mobile_shake001a.png",
+        "source": "/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/src/main/res/drawable/mobile_shake001a.png"
+    }
+]

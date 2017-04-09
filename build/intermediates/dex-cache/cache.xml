@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/libs/openintents-lib.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ff142b2108a65248da2986d7525fd813bce60057">
+        <dex dex="/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/transforms/dex/debug/folders/1000/2/openintents-lib_c918d0173c5b39d9feee262dbc1b2e8a0b576527/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_14a7f9a7a5769d64a5d82de136a99120b045fd12/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/libs/openintents-lib.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ff142b2108a65248da2986d7525fd813bce60057">
+        <dex dex="/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/pre-dexed/debug/openintents-lib_c918d0173c5b39d9feee262dbc1b2e8a0b576527.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fe877dd5c8286392030f4a75152b892f01b007bb">
+        <dex dex="/Users/lingalex/Documents/AndroidStudioProjects/FallDetection/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f07831a435d09d2054a7196332edaa9ab029e1b9/classes.dex" />
+    </item>
+
+</items>
