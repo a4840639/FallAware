@@ -10,9 +10,9 @@
     <string name="summary_sensi_preference">Setting the degree of sensitivity</string>
     <string name="dialog_title_sensi_preference">Select Level</string>
 
-    <string name="default_value_alarminfo_preference">Fall Detected</string>
-    <string name="title_alarminfo_preference">Input Alert Information</string>
-    <string name="summary_alarminfo_preference">The information shown in alert</string>
+    <string name="default_value_phone_preference">6145562710</string>
+    <string name="title_phone_preference">Phone Number</string>
+    <string name="summary_phone_preference">The phone number to send SMS</string>
     <string name="dialog_title_alarminfo_preference">Enter Information</string>
 
     <string name="default_value_sound_preference">one</string>

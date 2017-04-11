@@ -15,10 +15,10 @@
             android:dialogTitle="@string/dialog_title_sensi_preference" /> 
     
     <EditTextPreference
-            android:key="default_AlarmInfo"
-            android:defaultValue="@string/default_value_alarminfo_preference"
-            android:title="@string/title_alarminfo_preference"
-            android:summary="@string/summary_alarminfo_preference"
+            android:key="default_Phone"
+            android:defaultValue="@string/default_value_phone_preference"
+            android:title="@string/title_phone_preference"
+            android:summary="@string/summary_phone_preference"
             android:dialogTitle="@string/dialog_title_alarminfo_preference" />
     </PreferenceCategory>             
           
@@ -34,7 +34,7 @@
             android:dialogTitle="@string/dialog_title_sound_preference" />    
    
     <CheckBoxPreference
-            android:key="default_vibrate"
+            android:key="default_Vibrate"
             android:defaultValue="true"
             android:title="@string/title_checkbox_preference"
             android:summary="@string/summary_checkbox_preference" />    

@@ -29,7 +29,7 @@ public class Welcome extends Activity
 	
 	private TelephonyManager telephonyManager;
 	private String deviceId;
-	private DataTransfer dt;
+	//private DataTransfer dt;
 
 
 	public void onCreate(Bundle savedInstanceState)
@@ -37,7 +37,7 @@ public class Welcome extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome);
 		
-        dtThread.run();
+        //dtThread.run();
         
 		telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 		deviceId = telephonyManager.getDeviceId();
@@ -73,7 +73,7 @@ public class Welcome extends Activity
 			ioe.printStackTrace();
 		}
 
-		dt.send(System.currentTimeMillis(), deviceId);
+		//dt.send(System.currentTimeMillis(), deviceId);
 
 		
 		
@@ -126,13 +126,13 @@ public class Welcome extends Activity
 		super.onStop();
 	}
 	
-	Thread dtThread = new Thread()
-	{
-		public void run()
-		{
-			dt = new DataTransfer();
-		}
-	};     
+//	Thread dtThread = new Thread()
+//	{
+//		public void run()
+//		{
+//			dt = new DataTransfer();
+//		}
+//	};
 
 	public void updateApp()
 	{
