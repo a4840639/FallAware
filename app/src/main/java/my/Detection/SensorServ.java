@@ -116,7 +116,7 @@ public class SensorServ extends Service implements SensorListener
 		android.util.Log.i(TAG, "acquire!!!!!");
 		
 		// Establish connection with server.
-		dtThread.run();
+		//dtThread.run();
 
 		toJudgeMagneticField = true;
 		toJudgeAcceleration = true;
@@ -213,7 +213,7 @@ public class SensorServ extends Service implements SensorListener
 			alerted = true;
 			
 			Log.i(TAG, "Uploading fall event to server");
-			dt.sendFall(System.currentTimeMillis(), deviceId);
+			//dt.sendFall(System.currentTimeMillis(), deviceId);
 			System.gc();
 		}
 		synchronized (this)
@@ -225,7 +225,7 @@ public class SensorServ extends Service implements SensorListener
 				// Empirically, the "last" sensor to receive data at
 				// once is orientation. So take its timestamp.
 				Log.i(TAG, "Uploading data to server");
-				dt.send(time_ORI, theACC, ORI, theCOM, deviceId);
+				//dt.send(time_ORI, theACC, ORI, theCOM, deviceId);
 				
 				index_ACC = 0;
 				index_COM = 0;
@@ -668,11 +668,11 @@ public class SensorServ extends Service implements SensorListener
 		registerReceiver(battReceiver, battFilter);
 	}
 	
-	Thread dtThread = new Thread()
-	{
-		public void run()
-		{
-			dt = new DataTransfer();
-		}
-	};
+//	Thread dtThread = new Thread()
+//	{
+//		public void run()
+//		{
+//			dt = new DataTransfer();
+//		}
+//	};
 }

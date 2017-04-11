@@ -1,7 +1,7 @@
 package my.Detection;
 
-import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -15,10 +15,12 @@ import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-public class Detector extends Activity{// implements ViewFactory {
+public class Detector extends AppCompatActivity {// implements ViewFactory {
 
 	private static final String PREFS_NAME = "Initial_Ref";
 //    private SensorManager mSensorManager;
@@ -82,7 +84,8 @@ public class Detector extends Activity{// implements ViewFactory {
 		/** Show this screen */
         Context context = getApplicationContext();
         myReaderView = new SensorReaderView(context);
-        setContentView(myReaderView);
+		setContentView(myReaderView);
+		//setContentView(R.layout.detector);
         get_Pref();
 //        mService.copyObject(myReaderView, this);
     }
@@ -153,8 +156,8 @@ public class Detector extends Activity{// implements ViewFactory {
                 "Alarm!\n"+alarmInfo+"!!", Time);   
     	// Set the info for the views that show in the notification panel.
         // must set this for content view, or will throw a exception   
-    	notif.setLatestEventInfo(this, "Alarm!",   
-    			alarmInfo+"!!", contentIntent);   
+    	//notif.setLatestEventInfo(this, "Alarm!",
+    			//alarmInfo+"!!", contentIntent);
     	//an array of longs of times to turn the vibrator off and on.
     	// after a 100ms delay, vibrate for 250ms, pause for 100 ms and
         // then vibrate for 500ms.
@@ -234,7 +237,7 @@ public class Detector extends Activity{// implements ViewFactory {
 			mService.alerted = false;
 			mService.toJudgeAcceleration = true;
 			mService.toJudgeMagneticField = true;
-	        nm.cancel(R.string.notifier);  
+	        nm.cancel(R.string.notifier);
 	        myReaderView.blockedstate = false;
 	        myReaderView.bigACCDetected = false;
 			return true;
@@ -268,5 +271,23 @@ public class Detector extends Activity{// implements ViewFactory {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void setting(View view) {
+		Intent intent = new Intent(this, Setting.class);
+		startActivity(intent);
+	}
+
+	public void quit(View view) {
+		finish();
+	}
+
+	public void reset(View view) {
+		mService.alerted = false;
+		mService.toJudgeAcceleration = true;
+		mService.toJudgeMagneticField = true;
+		nm.cancel(R.string.notifier);
+		myReaderView.blockedstate = false;
+		myReaderView.bigACCDetected = false;
 	}
 }
