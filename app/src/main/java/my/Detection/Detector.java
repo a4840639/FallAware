@@ -15,10 +15,12 @@ import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.LayoutInflater;
 
 public class Detector extends AppCompatActivity {// implements ViewFactory {
 
@@ -84,9 +86,12 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 		/** Show this screen */
         Context context = getApplicationContext();
         myReaderView = new SensorReaderView(context);
-		setContentView(myReaderView);
-		//setContentView(R.layout.detector);
+		//setContentView(myReaderView);
+		setContentView(R.layout.detector);
         get_Pref();
+		ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.menu);
+		LayoutInflater layoutInflater = LayoutInflater.from(this);
+		mainLayout.addView(myReaderView);
 //        mService.copyObject(myReaderView, this);
     }
 
