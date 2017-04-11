@@ -27,5 +27,6 @@
     <string name="second_preferences_category">Prompt Preferences</string>
 
     <string name="NotYet">To trigger another action!\nNot implemented yet...</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

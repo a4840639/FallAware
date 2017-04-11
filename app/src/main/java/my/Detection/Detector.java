@@ -95,7 +95,7 @@ public class Detector extends Activity {// implements ViewFactory {
         Context context = getApplicationContext();
         myReaderView = new SensorReader();
 		//setContentView(myReaderView);
-		setContentView(R.layout.detector);
+		setContentView(R.layout.activity_main);
         get_Pref();
 //		ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.menu);
 //		mainLayout.addView(myReaderView);
