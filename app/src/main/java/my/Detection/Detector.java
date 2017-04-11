@@ -1,6 +1,7 @@
 package my.Detection;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -19,12 +20,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,7 +30,7 @@ import android.view.View;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 
-public class Detector extends AppCompatActivity {// implements ViewFactory {
+public class Detector extends Activity {// implements ViewFactory {
 
 	private static final String PREFS_NAME = "Initial_Ref";
 //    private SensorManager mSensorManager;
@@ -50,7 +48,7 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 	
 	private String TAG = "DJP_testing_Detector";
 	
-	private SensorReaderView myReaderView;
+	private SensorReader myReaderView;
 	private SensorServ mService;
 	private Detector detectorObject = this;
 	  
@@ -95,13 +93,12 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
         
 		/** Show this screen */
         Context context = getApplicationContext();
-        myReaderView = new SensorReaderView(context);
+        myReaderView = new SensorReader();
 		//setContentView(myReaderView);
 		setContentView(R.layout.detector);
         get_Pref();
-		ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.menu);
-		LayoutInflater layoutInflater = LayoutInflater.from(this);
-		mainLayout.addView(myReaderView);
+//		ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.menu);
+//		mainLayout.addView(myReaderView);
 //        mService.copyObject(myReaderView, this);
 
 		if (ContextCompat.checkSelfPermission(context,
@@ -186,8 +183,7 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
     	//pop-up dialog
 //	    Toast.makeText(this, "for test",Toast.LENGTH_LONG).show();
     }
-    
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+
 	private void showNotification(Long Time){
 
 //        		//test.class is the class will be invoked in next intent(just the "contentIntent")
@@ -229,17 +225,17 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 				);
 
 
-		android.support.v4.app.NotificationCompat.Builder mBuilder =
-				new NotificationCompat.Builder(this)
+		Notification.Builder mBuilder =
+				new Notification.Builder(this)
 						.setSmallIcon(R.drawable.alert_dialog_icon)
 						.setContentTitle("Alert!")
-						.setContentText("Fall detected!");
-		mBuilder.setVibrate(vibration);
-		mBuilder.setSound(soundUri);
-		mBuilder.setPriority(2);
-		mBuilder.setAutoCancel(true);
-		mBuilder.setOngoing(true);
-		mBuilder.setContentIntent(resultPendingIntent);
+						.setContentText("Fall detected!")
+		                .setVibrate(vibration)
+		                .setSound(soundUri)
+		                .setPriority(2)
+		                .setAutoCancel(true)
+		                .setOngoing(true)
+		                .setContentIntent(resultPendingIntent);
 		nm.notify(0, mBuilder.build());
 	}
     
@@ -354,7 +350,8 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 	}
 
 	public void quit(View view) {
-		finish();
+        nm.cancel(0);
+        finish();
 	}
 
 	public void reset(View view) {

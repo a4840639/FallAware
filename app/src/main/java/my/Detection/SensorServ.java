@@ -86,7 +86,7 @@ public class SensorServ extends Service implements SensorListener
 	PowerManager pm;
 	PowerManager.WakeLock wl;
 
-	private SensorReaderView myReaderView;
+	private SensorReader myReaderView;
 	private Detector detectorObject;
 	
 	//private String deviceId;
@@ -189,7 +189,7 @@ public class SensorServ extends Service implements SensorListener
 		return binder;
 	}
 
-	public void copyObject(SensorReaderView viewObject, Detector detectorObject)
+	public void copyObject(SensorReader viewObject, Detector detectorObject)
 	{
 		this.myReaderView = viewObject;
 		this.detectorObject = detectorObject;
@@ -302,7 +302,7 @@ public class SensorServ extends Service implements SensorListener
 						comparePosition_ori(CurrentTime, values);
 					}
 				}
-				myReaderView.invalidate();
+				//myReaderView.invalidate();
 			}
 		}
 	}
