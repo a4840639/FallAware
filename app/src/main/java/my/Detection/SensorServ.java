@@ -54,9 +54,9 @@ public class SensorServ extends Service implements SensorListener
 	private int numOfPositionVal = 0;
 	private int numOfTry2DetectActivity = 0;
 
-	private Long greatAccelerationTime = new Long(0);
-	private Long beforeFirstGreatAccelerationTime = new Long(0);
-	private Long normalPositionHoldTime = new Long(0);
+	private Long greatAccelerationTime = 0L;
+	private Long beforeFirstGreatAccelerationTime = 0L;
+	private Long normalPositionHoldTime = 0L;
 
 	private String battery_status;
 	
@@ -90,8 +90,7 @@ public class SensorServ extends Service implements SensorListener
 	private Detector detectorObject;
 	
 	//private String deviceId;
-	private TelephonyManager telephonyManager;
-	private long fallTime;
+	private long fallTime = System.currentTimeMillis();
 
 	public class MyBinder extends Binder
 	{
@@ -108,14 +107,11 @@ public class SensorServ extends Service implements SensorListener
 		android.util.Log.i(TAG, "service_onCreate!!!!!");
 
 		mSensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-		pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
-		wl.acquire();
+//		pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+//		wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
+//		wl.acquire();
 		/** LOG */
 		android.util.Log.i(TAG, "acquire!!!!!");
-		
-		// Establish connection with server.
-		//dtThread.run();
 
 		toJudgeMagneticField = true;
 		toJudgeAcceleration = true;
@@ -126,40 +122,6 @@ public class SensorServ extends Service implements SensorListener
 		alerted = false;
 		greatAcceleration = false;
 		initial = true;
-		
-		//telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-		//deviceId = telephonyManager.getDeviceId();
-
-//		try
-//		{
-//			//ByteArrayInputStream ins = new ByteArrayInputStream(
-//					//deviceId.getBytes());
-//			MessageDigest digester = MessageDigest.getInstance("SHA-512");
-//			byte[] bytes = new byte[8192];
-//			int byteCount;
-//			while ((byteCount = ins.read(bytes)) > 0)
-//			{
-//				digester.update(bytes, 0, byteCount);
-//			}
-//
-//			byte[] digest = digester.digest();
-//			StringBuffer sb = new StringBuffer();
-//			for (int i = 0; i < digest.length; i++)
-//			{
-//				sb.append(Integer.toString((digest[i] & 0xff) + 0x100, 16)
-//						.substring(1));
-//			}
-//
-//			//deviceId = new String(sb.toString());
-//		}
-//		catch (NoSuchAlgorithmException nsae)
-//		{
-//			nsae.printStackTrace();
-//		}
-//		catch (IOException ioe)
-//		{
-//			ioe.printStackTrace();
-//		}
 
 		mSensorManager.registerListener(this,
 				SensorManager.SENSOR_ACCELEROMETER
@@ -176,7 +138,7 @@ public class SensorServ extends Service implements SensorListener
 		/** LOG */
 		android.util.Log.i(TAG, "service_onDestroy!!!!!");
 		mSensorManager.unregisterListener(this);
-		wl.release();
+		//wl.release();
 		/** LOG */
 		android.util.Log.i(TAG, "release!!!!!");
 		super.onDestroy();

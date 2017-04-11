@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, test</string>
-    <string name="app_name">PerFallD</string>
+    <string name="app_name">Fall Detection</string>
     <string name="notifier">notification</string>
-    <string name="welcome">Welcome to PerFallD System</string>
 
     <string name="default_value_sensi_preference">Medium</string>
     <string name="title_sensi_preference">Detection Sensitivity Level</string>
     <string name="summary_sensi_preference">Setting the degree of sensitivity</string>
     <string name="dialog_title_sensi_preference">Select Level</string>
 
-    <string name="default_value_phone_preference">6145562710</string>
+    <string name="default_value_phone_preference"></string>
     <string name="title_phone_preference">Phone Number</string>
     <string name="summary_phone_preference">The phone number to send SMS</string>
     <string name="dialog_title_alarminfo_preference">Enter Information</string>

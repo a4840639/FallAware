@@ -39,7 +39,7 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
     private boolean vibrationOrNot;
     private long vibrating_time[] = new long[]{100,250,100,500};
     
-	private final int RG_REQUEST = 0; 
+	private final int RG_REQUEST = 1;
 	private String soundType;
 	private Uri soundUri;
     private long vibration[];
@@ -95,37 +95,19 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 		/** Show this screen */
         Context context = getApplicationContext();
         myReaderView = new SensorReader();
-		//setContentView(myReaderView);
 		setContentView(R.layout.detector);
         get_Pref();
-//		ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.menu);
-//		mainLayout.addView(myReaderView);
 //        mService.copyObject(myReaderView, this);
 
 		if (ContextCompat.checkSelfPermission(context,
 				Manifest.permission.SEND_SMS)
 				!= PackageManager.PERMISSION_GRANTED) {
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.SEND_SMS},
+                            0);
+                }
 
-			// Should we show an explanation?
-			if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-					Manifest.permission.SEND_SMS)) {
-
-				// Show an expanation to the user *asynchronously* -- don't block
-				// this thread waiting for the user's response! After the user
-				// sees the explanation, try again to request the permission.
-
-			} else {
-
-				// No explanation needed, we can request the permission.
-
-				ActivityCompat.requestPermissions(this,
-						new String[]{Manifest.permission.SEND_SMS},
-						0);
-
-				// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-				// app-defined int constant. The callback method gets the
-				// result of the request.
-			}
 		}
     }
 
@@ -152,9 +134,7 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
     	super.onActivityResult(requestCode, resultCode, data);
     	if (requestCode == RG_REQUEST) {
-    	      if(resultCode == RESULT_OK) {
-    	    	  get_Pref();
-    	      }
+            get_Pref();
     	 }
     }
     
@@ -187,28 +167,9 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 
 	private void showNotification(Long Time){
 
-//        		//test.class is the class will be invoked in next intent(just the "contentIntent")
-//        		//It could be make phone call
-//        // construct the Notification object.
-//    	Notification notif = new Notification(R.drawable.alert_dialog_icon,
-//                "Alarm!\n"+alarmInfo+"!!", Time);
-//    	// Set the info for the views that show in the notification panel.
-//        // must set this for content view, or will throw a exception
-//    	//notif.setLatestEventInfo(this, "Alarm!",
-//    			//alarmInfo+"!!", contentIntent);
-//    	//an array of longs of times to turn the vibrator off and on.
-//    	// after a 100ms delay, vibrate for 250ms, pause for 100 ms and
-//        // then vibrate for 500ms.
-//    	// for being able to vibrate, the permission should be add in manifest.xml
-//        notif.vibrate = vibration;
-//    	// play alarm sound
-//    	notif.defaults = notif.DEFAULT_SOUND;
-//        notif.sound = soundUri;
-////      notif.sound = Uri.parse("file:///system/media/audio/alarms/Alarm_Beep_01.ogg");
-//        nm.notify(R.string.notifier, notif);
-
 		// Creates an explicit intent for an Activity in your app
 		Intent resultIntent = new Intent(this, Detector.class);
+        resultIntent.setFlags(resultIntent.FLAG_ACTIVITY_SINGLE_TOP);
 
 // The stack builder object will contain an artificial back stack for the
 // started Activity.
@@ -242,12 +203,12 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
     
     private void get_Pref(){
 		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-		soundType = settings.getString("sound","one");
+		soundType = settings.getString("default_Sound","one");
 		if(soundType.equals("one")){
-			soundUri = Uri.parse("file:///system/media/audio/alarms/Alarm_Beep_01.ogg");
+			soundUri = Uri.parse("file:///system/media/audio/alarms/Neon.ogg");
 		}
 		else if(soundType.equals("two")){
-			soundUri = Uri.parse("file:///system/media/audio/alarms/Alarm_Buzzer.ogg");
+			soundUri = Uri.parse("file:///system/media/audio/alarms/Rise.ogg");
 		}
 		else if(soundType.equals("silent")){
 			soundUri = null;
@@ -260,98 +221,32 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
         	vibration = null;
         }
         phoneNo = settings.getString("default_Phone", "6145562710");
-        sensitivity = settings.getString("sensitivity", "Medium");
+        sensitivity = settings.getString("default_Sensitivity", "Medium");
 /**LOG*/android.util.Log.i(TAG, "sensitivity's value is "+sensitivity);
-//        if (sensitivity.equals("High")){
-//        	myReaderView.threshold = 4.0*G;
-//        	myReaderView.simpleDetect = false;
-//        }
-//        else if (sensitivity.equals("Medium")){
-//        	myReaderView.threshold = 0.6*G;
-//        	myReaderView.simpleDetect = false;
-//		}
-//		else {								//if (sensitivity == "Low"){
-//			myReaderView.threshold = 0.4*G;
-//			myReaderView.simpleDetect = true;
-//		}
-		myReaderView.threshold = 4.0*G;
-        myReaderView.simpleDetect = false;
+        if (sensitivity.equals("Low")){
+        	myReaderView.threshold = 4.0*G;
+        	myReaderView.simpleDetect = false;
+        }
+        else if (sensitivity.equals("Medium")){
+        	myReaderView.threshold = 0.6*G;
+        	myReaderView.simpleDetect = false;
+		}
+		else {								//if (sensitivity == "High"){
+			myReaderView.threshold = 0.4*G;
+			myReaderView.simpleDetect = true;
+		}
     }
 
-///////////////////////////////////////////////////////////////////////////
-    /** Add some menus for...							  *////////////////
-///////////////////////////////////////////////////////////////////////////
-    
-	private static final int MENU_RESET = Menu.FIRST;
-	private static final int MENU_SETTINGS = Menu.FIRST + 1;
-	private static final int MENU_QUIT = Menu.FIRST + 2;
-	
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		super.onCreateOptionsMenu(menu);
-//		// Standard menu
-//		menu.add(0, MENU_RESET, 0, "Reset")
-//			.setIcon(R.drawable.mobile_shake001a)//change the icon
-//			.setShortcut('0', 'r');
-//		menu.add(1, MENU_SETTINGS, 0, "Configuration")
-//			.setIcon(R.drawable.mobile_shake001a) //change the icon
-//			.setShortcut('0', 'c');
-//		menu.add(2, MENU_QUIT, 0, "Quit")//change the icon
-//			.setIcon(R.drawable.mobile_shake001a)
-//			.setShortcut('1', 'q');
-//		return true;
-//	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case MENU_RESET:
-			mService.alerted = false;
-			mService.toJudgeAcceleration = true;
-			mService.toJudgeMagneticField = true;
-	        nm.cancel(R.string.notifier);
-	        myReaderView.blockedstate = false;
-	        myReaderView.bigACCDetected = false;
-			return true;
-			
-		case MENU_SETTINGS:
-			Intent mIntent = new Intent(this, my.Detection.Setting.class);
-			startActivityForResult(mIntent,RG_REQUEST); 
-			return true;
-			
-		case MENU_QUIT:
-	        new AlertDialog.Builder(this)
-	        .setIcon(R.drawable.alert_dialog_icon)  //change the icon
-	        .setTitle("Quit")
-	        .setMessage("Are you sure?")// index is "+index)
-	        .setPositiveButton("YES", 
-	       		new DialogInterface.OnClickListener() {
-	       	 		public void onClick(DialogInterface dialog, int whichButton) {
-//	       	 			setResult(RESULT_OK);
-	       	 			unbindService(mConnection);
-	       	 			System.exit(0);
-	       	 			finish();
-	       	 		}
-	        	})
-	        .setNegativeButton("NO", 
-	       		new DialogInterface.OnClickListener() {
-	       	 		public void onClick(DialogInterface dialog, int whichButton) {
-	       	 			//Do Nothing.
-	       	 		}
-	        	})
-	        .show();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 
 	public void setting(View view) {
 		Intent intent = new Intent(this, my.Detection.Setting.class);
-		startActivity(intent);
+		startActivityForResult(intent, RG_REQUEST);
 	}
 
 	public void quit(View view) {
         nm.cancel(0);
+		unbindService(mConnection);
+		System.exit(0);
         finish();
 	}
 
@@ -368,10 +263,26 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 
 	protected void sendSMSMessage() {
 		String message = "Fall";
-
-		SmsManager smsManager = SmsManager.getDefault();
-		smsManager.sendTextMessage(phoneNo, null, message, null, null);
-		Toast.makeText(getApplicationContext(), "SMS sent.",
-				Toast.LENGTH_LONG).show();
+        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNo, null, message, null, null);
+            Toast.makeText(getApplicationContext(), "SMS sent.",
+                    Toast.LENGTH_LONG).show();
+        }
 	}
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        mService.alerted = false;
+        mService.toJudgeAcceleration = true;
+        mService.toJudgeMagneticField = true;
+        myReaderView.blockedstate = false;
+        myReaderView.bigACCDetected = false;
+        Toast.makeText(getApplicationContext(), "Reseted.",
+                Toast.LENGTH_LONG).show();
+        unbindService(mConnection);
+    }
+
 }
