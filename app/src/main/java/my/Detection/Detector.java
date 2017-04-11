@@ -23,6 +23,7 @@ import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +31,7 @@ import android.view.View;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 
-public class Detector extends Activity {// implements ViewFactory {
+public class Detector extends AppCompatActivity {// implements ViewFactory {
 
 	private static final String PREFS_NAME = "Initial_Ref";
 //    private SensorManager mSensorManager;
@@ -95,7 +96,7 @@ public class Detector extends Activity {// implements ViewFactory {
         Context context = getApplicationContext();
         myReaderView = new SensorReader();
 		//setContentView(myReaderView);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.detector);
         get_Pref();
 //		ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.menu);
 //		mainLayout.addView(myReaderView);
@@ -345,7 +346,7 @@ public class Detector extends Activity {// implements ViewFactory {
 	}
 
 	public void setting(View view) {
-		Intent intent = new Intent(this, Setting.class);
+		Intent intent = new Intent(this, my.Detection.Setting.class);
 		startActivity(intent);
 	}
 
