@@ -50,11 +50,11 @@ public class SensorReader
         mRect.set(-0.5f, -0.5f, 0.5f, 0.5f);
         mPath.arcTo(mRect, 0, 180);
 
-        hehe(1,1,1,1);
+        mimic(1,1,1,1);
     }
 
 
-    protected void hehe(int w, int full_h, int oldw, int oldh)
+    protected void mimic(int w, int full_h, int oldw, int oldh)
     {
         int h = full_h;// -50; // the real height of view
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.RGB_565);
@@ -71,14 +71,14 @@ public class SensorReader
         if (mWidth < mHeight)
         {
             mMaxX = w;
-            Log.i(TAG, "Width is less than Height. mMaxX is " + mMaxX);
-            Log.i(TAG, "mWidth is " + w + "mHeight is " + h);
+            //Log.i(TAG, "Width is less than Height. mMaxX is " + mMaxX);
+            //Log.i(TAG, "mWidth is " + w + "mHeight is " + h);
         }
         else
         {
             mMaxX = w - 50;
-            Log.i(TAG, "Width is lager than Height. mMaxX is " + mMaxX);
-            Log.i(TAG, "mWidth is " + mWidth + "mHeight is " + h);
+            //Log.i(TAG, "Width is lager than Height. mMaxX is " + mMaxX);
+            //Log.i(TAG, "mWidth is " + mWidth + "mHeight is " + h);
         }
         mLastX = mMaxX;
     }

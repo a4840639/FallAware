@@ -13,17 +13,28 @@
             android:entries="@array/entries_sensi_preference"
             android:entryValues="@array/entryvalues_sensi_preference"
             android:dialogTitle="@string/dialog_title_sensi_preference" /> 
-    
-    <EditTextPreference
+
+    </PreferenceCategory>
+          
+	<PreferenceCategory  
+		    android:title="@string/second_preferences_category">
+
+        <EditTextPreference
             android:key="default_Phone"
+            android:inputType="number"
             android:defaultValue="@string/default_value_phone_preference"
             android:title="@string/title_phone_preference"
             android:summary="@string/summary_phone_preference"
             android:dialogTitle="@string/dialog_title_alarminfo_preference" />
-    </PreferenceCategory>             
-          
-	<PreferenceCategory  
-		    android:title="@string/second_preferences_category">            
+
+        <EditTextPreference
+            android:inputType="number"
+            android:key="default_Delay"
+            android:defaultValue="@string/default_value_delay_preference"
+            android:title="@string/title_delay_preference"
+            android:summary="@string/summary_delay_preference"
+            android:dialogTitle="@string/dialog_title_delay_preference" />
+
     <ListPreference
             android:key="default_Sound"
             android:defaultValue="@string/default_value_sound_preference"
@@ -37,7 +48,8 @@
             android:key="default_Vibrate"
             android:defaultValue="true"
             android:title="@string/title_checkbox_preference"
-            android:summary="@string/summary_checkbox_preference" />    
+            android:summary="@string/summary_checkbox_preference" />
+
     </PreferenceCategory>            
 
 </PreferenceScreen>

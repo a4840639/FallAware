@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, test</string>
-    <string name="app_name">Fall Detection</string>
+    <string name="app_name">Fall Aware</string>
     <string name="notifier">notification</string>
 
     <string name="default_value_sensi_preference">Medium</string>
@@ -18,6 +18,11 @@
     <string name="title_sound_preference">Sound</string>
     <string name="summary_sound_preference">Setting the alarm sound</string>
     <string name="dialog_title_sound_preference">Select</string>
+
+    <string name="default_value_delay_preference">30</string>
+    <string name="title_delay_preference">Delay</string>
+    <string name="summary_delay_preference">The delay between detection and sending SMS (s)</string>
+    <string name="dialog_title_delay_preference">Enter Delay (s)</string>
 
     <string name="title_checkbox_preference">Vibrate</string>
     <string name="summary_checkbox_preference">Setting to vibrate or not</string>
