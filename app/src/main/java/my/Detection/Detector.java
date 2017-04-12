@@ -114,24 +114,17 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 
 		if (ContextCompat.checkSelfPermission(context,
 				Manifest.permission.SEND_SMS)
-				!= PackageManager.PERMISSION_GRANTED) {
-			if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
+				!= PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(context,
+                        Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
 				ActivityCompat.requestPermissions(this,
-						new String[]{Manifest.permission.SEND_SMS},
-						0);
-			}
+						new String[]{
+                                Manifest.permission.SEND_SMS,
+                                Manifest.permission.ACCESS_FINE_LOCATION},
+                        1);
 
 		}
-        if (ContextCompat.checkSelfPermission(context,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        0);
-            }
-
-        }
 	}
 
 	@Override
@@ -225,7 +218,7 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 						.setContentText("Fall detected!")
 						.setVibrate(vibration)
 						.setSound(soundUri)
-						.setPriority(2)
+						.setPriority(Notification.PRIORITY_MAX)
 						.setAutoCancel(true)
 						.setOngoing(true)
 						.setContentIntent(resultPendingIntent)
