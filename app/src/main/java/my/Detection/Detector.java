@@ -164,7 +164,7 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 	/**  Display a Alarm */
 	public void showAlarms(Long Time) {
 		/**LOG*/android.util.Log.i(TAG, "received call. here start to showAlarms! ");
-		showNotification(Time);
+		showNotification();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             myLocation = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -197,7 +197,7 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 //	    Toast.makeText(this, "for test",Toast.LENGTH_LONG).show();
 	}
 
-	private void showNotification(Long Time) {
+	private void showNotification() {
 
 		// Creates an explicit intent for an Activity in your app
 		Intent resultIntent = new Intent(this, Detector.class);
@@ -286,8 +286,10 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 	}
 
 	protected void sendSMSMessage() {
-		String message = "A fall is detected!\n" +
-                "Location: http://maps.google.com/?q=" + myLocation.getLatitude() + "," + myLocation.getLongitude();
+		String message = "A fall is detected!";
+        if(myLocation != null) {
+            message += "\nLocation: http://maps.google.com/?q=" + myLocation.getLatitude() + "," + myLocation.getLongitude();
+        }
 		if (phoneNo != "" && ContextCompat.checkSelfPermission(getApplicationContext(),
 				Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
 			SmsManager smsManager = SmsManager.getDefault();
@@ -333,7 +335,6 @@ public class Detector extends AppCompatActivity {// implements ViewFactory {
 		public void run() {
             lm.removeUpdates(ll);
             android.util.Log.i(TAG, "Location!!!!!");
-            android.util.Log.i(TAG, myLocation.toString());
 		}
 	};
 
